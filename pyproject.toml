@@ -1,0 +1,15 @@
+[project]
+name = "htmlexcel"
+version = "0.1.0"
+dependencies = ["openpyxl", "click"]
+authors = [
+    {name = "Alan Quintero", email = "alan.qb.fcqb21@uas.edu.mx"},
+]
+description = "A CLI application to retrieve interaction information between aminoacid residues given in an HTML file by PDBSum, exporting it into an xlsx file."
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+htmlexcel = "htmlexcel.__main__:cli"
