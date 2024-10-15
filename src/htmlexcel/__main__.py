@@ -1,6 +1,7 @@
 #!/bin/python3
 
 import glob
+import os
 
 import click
 
@@ -45,12 +46,13 @@ def cli(file, directory, out):
     writer = ExcelWriter("Interactions")
 
     for i, interaction_file in enumerate(interaction_files):
-        index = str(i + 1)
+        index = i + 1
+        sheet_title = os.path.basename(interaction_file.filepath) [:21]
         if i == 0:
-            writer.current_sheet.title = index
+            writer.current_sheet.title = sheet_title
         else:
-            writer.workbook.create_sheet(index)
-            writer.switch_sheet(index)
+            writer.workbook.create_sheet(sheet_title, index)
+            writer.switch_sheet(sheet_title)
         writer.create_table(interaction_file)
         writer.save(out)
         writer.close()

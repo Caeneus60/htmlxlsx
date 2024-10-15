@@ -4,6 +4,7 @@ from htmlexcel.utils.molecule.interaction import Interaction
 class HTMLReader:
     def __init__(self, file):
         self.parse_html(file)
+        self.filepath = file
 
         self.file = open(file, "r")
         self.get_interaction_lines()
